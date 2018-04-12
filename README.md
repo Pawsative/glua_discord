@@ -101,4 +101,5 @@ If this hook is called with a state it will set the discord state.
 ***
 
 # Special Thanks To
-    @DevulTj
+    @DevulTj (https://github.com/DevulTj)
+    @Tenrys (https://github.com/Tenrys)
