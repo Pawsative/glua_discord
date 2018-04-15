@@ -17,11 +17,9 @@ You have to edit the constants to fit your discord application. And add the hook
 `CLIENT_ID`
 The Client ID from the discord application.
 
-`PROCESS_ID`
 The Process ID from the discord application.
 
     local CLIENT_ID 	= "1234567891011121314"
-    local PROCESS_ID 	= 1337
 
 **Server**
 `CLIENT_SECRET`

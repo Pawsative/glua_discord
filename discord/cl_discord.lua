@@ -12,7 +12,6 @@ DISCORD 		= DISCORD 		or {}
 DISCORD.State 	= DISCORD.State or "Default"
 
 local CLIENT_ID 	= DISCORD.Client_ID
-local PROCESS_ID 	= DISCORD.Process_ID
 
 local net 		= net
 local hook 		= hook
@@ -117,7 +116,11 @@ function DISCORD:CheckPort( iPort, fCallback, iTryedPorts )
 
 	http.Fetch( string.format( CONNECTION_ADDRESS, iPort ),
 	function( sBody )
-		if not string.match( sBody, "Authorization Required" ) then return end
+		if not string.match( sBody, "Authorization Required" ) then
+			self:CheckPort( iPort + 1, fCallback, iTryedPorts )
+
+			return
+		end
 
 		printSuccess( "Connected successfully on port " .. iPort )
 
@@ -160,7 +163,7 @@ function DISCORD:SetActivity( tActivity, fCallback )
 	self:SendHTTP( {
 		cmd = "SET_ACTIVITY",
 		args = {
-			pid = PROCESS_ID,
+			pid = 0,
 			activity = tActivity
 		},
 		nonce = tostring( SysTime() )
@@ -266,4 +269,8 @@ hook.Add( "Discord.ChangeState", "Discord.ChangeState", function( sState )
 	if not sState or #sState <= 0 then return end
 
 	DISCORD:SetState( sState )
+end )
+
+hook.Add( "ShutDown", "Discord.ShutDown", function()
+	DISCORD:SetActivity( nil )
 end )

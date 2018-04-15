@@ -10,11 +10,6 @@
 
 		Value: (String)		= The Client ID from the discord application
 
-	Integer: PROCESS_ID
-
-		local PROCESS_ID = 1337
-
-		Value: (Integer)	= The Process ID from the discord application
 ]]--
 
 --[[------------------------------------------------------------------------------------------------
@@ -23,7 +18,6 @@
 ]]--
 
 local CLIENT_ID 	= "1234567891011121314"
-local PROCESS_ID 	= 1337
 
 --[[------------------------------------------------------------------------------------------------
 	| EDIT CODE BELOW AT YOUR OWN RISK |
@@ -36,7 +30,6 @@ local PROCESS_ID 	= 1337
 
 DISCORD 			= DISCORD or {}
 DISCORD.Client_ID 	= CLIENT_ID
-DISCORD.Process_ID 	= PROCESS_ID
 
 DISCORD.Initialized = DISCORD.Initialized 	or false
 DISCORD.HTTPLoaded 	= DISCORD.HTTPLoaded 	or false
