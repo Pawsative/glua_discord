@@ -64,7 +64,7 @@ The client can authenticate himself to the server and also set up his activity i
 This hook will be called in a certain time every so often, returning a table will then set the activity.
 
 	local START_TIME = os.time()
-    hook.Add( "Discord.GetActivity", "ADDON.UniqueName", sState )
+    hook.Add( "Discord.GetActivity", "ADDON.UniqueName", function( sState )
         if sState == "Default" then
 			local tActivity = {
 				details = "My Cool Server",
